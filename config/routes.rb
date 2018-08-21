@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # authentication
   devise_for :users
 
-
+  get "users/:id", to: "users#show"
   # get 'item/show'
   # get 'booking/show'
   # get 'booking/edit'
