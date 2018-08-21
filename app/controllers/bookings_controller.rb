@@ -7,10 +7,10 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
     @boookings = policy_scope(Booking).order(created_at: :desc)
   end
 
-  def new
-    @booking = Booking.new
-    authorize @booking
-  end
+  # def new
+  #   @booking = Booking.new
+  #   authorize @booking
+  # end
 
   def edit
   end
@@ -20,11 +20,14 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
   def create
     @booking = Booking.new(booking_params)
+    @item = Item.find(params[:item_id])
+    @booking.item = @item
+    @booking.user = current_user
     authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      render 'items/show'
     end
   end
 
@@ -48,7 +51,7 @@ private
   end
 
   def booking_params
-    params.require(:booking).permit(:days, :total_price)
+    params.require(:booking).permit(:days)
   end
 
 end

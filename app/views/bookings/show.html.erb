@@ -2,8 +2,8 @@
 <p>Find me in app/views/booking/show.html.erb</p>
 
 
-<% @bookings.each do |booking| %>
-  <% if policy(booking).edit? %>
-    <%= link_to "Update", edit_booking_path(booking) %>
-  <% end %>
+<%= @booking.days %> days
+<% if policy(@booking).edit? %>
+  <%= link_to "Update", edit_booking_path(@booking) %>
 <% end %>
+

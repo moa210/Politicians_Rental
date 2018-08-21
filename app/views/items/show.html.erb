@@ -1,10 +1,29 @@
-<h1><%= @item.user.full_name %>'s <%= @item.category %></h1>
-<h3>£<%= @item.price %></h3>
-<p><%= @item.description %></p>
-<% unless policy(@item).edit? %>
-  <%= link_to "Book", new_item_booking_path(@item) %>
-<% end %>
+<div class="container">
+  <% if @item.category == "accommodation" %>
+    <h1><%= @item.user.full_name %>'s crib</h1>
+  <% elsif @item.category == "clothing" %>
+    <h1><%= @item.user.full_name %>'s threads</h1>
+  <% elsif @item.category == "transport" %>
+    <h1><%= @item.user.full_name %>'s wheels</h1>
+  <% else %>
+    <h1><%= @item.user.full_name %>'s listing</h1>
+  <% end %>
+  <h3>£<%= @item.price %></h3>
+  <p><%= @item.description %></p>
 
-<% if policy(@item).edit? %>
-  <%= link_to "Update", edit_item_path(@item) %>
-<% end %>
+  <% unless policy(@item).edit? %>
+    <%= link_to "Book", new_item_booking_path(@item) %>
+  <% end %>
+
+  <% if policy(@item).edit? %>
+    <%= link_to "Update", edit_item_path(@item) %>
+  <% end %>
+
+  <% if policy(@booking).create? %>
+    <h2>New Booking</h2>
+    <%= simple_form_for([@item, @booking]) do |f| %>
+      <%= f.input :days %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
+</div>
