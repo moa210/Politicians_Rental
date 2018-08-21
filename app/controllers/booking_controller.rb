@@ -4,6 +4,10 @@ before_action :find_booking, only: [:edit, :update, :show]
   def index
     @boookings = current_user.bookings
   end
+  
+  def new
+    @booking = Booking.new
+  end
 
   def edit
   end
