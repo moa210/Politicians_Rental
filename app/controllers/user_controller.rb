@@ -20,7 +20,7 @@ before_action :find_user, only: [:edit, :update, :show]
   #     render :new
   #   end
   # end
-  # not sure if devise takes car of update???
+  # not sure if devise takes care of update???
 
   def update
     if @user.update(user_params)
