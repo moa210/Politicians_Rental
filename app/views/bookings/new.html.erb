@@ -3,7 +3,6 @@
 <% if policy(Booking).create? %>
   <h1>New Booking</h1>
   <%= simple_form_for @booking do |f| %>
-    <%= f.association :item %>
     <%= f.input :days %>
     <%= f.submit %>
     <% end %>
