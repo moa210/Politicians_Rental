@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 before_action :find_user, only: [:edit, :update, :show]
 
   def index
@@ -37,8 +37,7 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:full_name, :, :password)
+    params.require(:user).permit(:full_name, :email, :password)
   end
 
-end
 end

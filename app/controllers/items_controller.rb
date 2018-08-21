@@ -1,14 +1,14 @@
-class ItemController < ApplicationController
+class ItemsController < ApplicationController
   before_action :find_item, only: [:edit, :update, :show, :destroy]
 
   def index
     @items = current_user.items
   end
-  
+
   def new
     @item = Item.new
   end
-  
+
   def edit
   end
 
@@ -23,12 +23,12 @@ class ItemController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @item.destroy
     redirect_to items_path
   end
-  
+
   def update
     if @item.update(item_params)
       redirect_to item_path(@item)
