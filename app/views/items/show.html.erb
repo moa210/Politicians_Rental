@@ -1,9 +1,10 @@
-<h1>Item#show</h1>
-<p>Find me in app/views/item/show.html.erb</p>
-
-<% @items.each do |item| %>
-  <% if policy(item).edit? %>
-    <%= link_to "Update", edit_item_path(item) %>
-  <% end %>
+<h1><%= @item.user.full_name %>'s <%= @item.category %></h1>
+<h3>£<%= @item.price %></h3>
+<p><%= @item.description %></p>
+<% unless policy(@item).edit? %>
+  <%= link_to "Book", new_item_booking_path(@item) %>
 <% end %>
 
+<% if policy(@item).edit? %>
+  <%= link_to "Update", edit_item_path(@item) %>
+<% end %>

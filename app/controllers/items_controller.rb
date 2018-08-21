@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
     authorize @item
     @item.user = current_user
     if @item.save
-      redirect_to user_path(current_user)
+      redirect_to items_path
     else
       # raise
       render :new
@@ -40,6 +40,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
 private
 
   def find_item
