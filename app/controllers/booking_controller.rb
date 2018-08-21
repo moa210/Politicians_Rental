@@ -1,5 +1,5 @@
 class BookingController < ApplicationController
-before_action :find_booking, only: [:edit, :update, :show]
+before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
   def index
     @boookings = current_user.bookings
@@ -31,6 +31,10 @@ before_action :find_booking, only: [:edit, :update, :show]
       render :edit
     end
   end
+  
+  def destroy
+    @restaurant.destroy
+  end 
 
 private
 
