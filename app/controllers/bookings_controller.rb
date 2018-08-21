@@ -1,10 +1,11 @@
-class BookingController < ApplicationController
+class BookingsController < ApplicationController
+  
 before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
   def index
     @boookings = current_user.bookings
   end
-  
+
   def new
     @booking = Booking.new
   end
@@ -31,10 +32,10 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
       render :edit
     end
   end
-  
+
   def destroy
     @restaurant.destroy
-  end 
+  end
 
 private
 
