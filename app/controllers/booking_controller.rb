@@ -24,7 +24,6 @@ before_action :find_booking, only: [:edit, :update, :show]
     end
   end
 
-
   def update
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
