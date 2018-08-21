@@ -1,1 +1,11 @@
-<h1>view for new booking </h1>
+<div class="container">
+  <h1>New Booking</h1>
+  <%= simple_form_for @booking do |f| %>
+    <%= f.association :item %>
+
+    <%= f.input :days %>
+
+    <%= f.submit %>
+
+  <% end %>
+</div>
