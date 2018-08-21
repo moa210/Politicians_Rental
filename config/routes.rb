@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  # authentication
   devise_for :users
+
+
+  # get 'item/show'
+  # get 'booking/show'
+  # get 'booking/edit'
+
   resources :bookings
   resources :items
   root to: 'pages#home'
