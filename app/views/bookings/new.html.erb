@@ -1,0 +1,4 @@
+<h1>view for new booking </h1>
+<% if policy(Booking).create? %>
+  <%= link_to "New booking", new_booking_path %>
+<% end %>

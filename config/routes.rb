@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   # get 'booking/show'
   # get 'booking/edit'
 
-  resources :bookings
-  resources :items
+  resources :bookings, except: [:new, :create]
+  resources :items do
+    resources :bookings, only: [:new, :create]
+  end
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
