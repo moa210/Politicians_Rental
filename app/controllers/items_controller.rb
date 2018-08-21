@@ -1,14 +1,15 @@
 class ItemsController < ApplicationController
+
   before_action :find_item, only: [:edit, :update, :show, :destroy]
 
   def index
     @items = current_user.items
   end
-
+  
   def new
     @item = Item.new
   end
-
+  
   def edit
   end
 
@@ -28,14 +29,13 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
-
+  
   def update
     if @item.update(item_params)
       redirect_to item_path(@item)
     else
       render :edit
     end
-  end
 
 private
 
@@ -47,5 +47,4 @@ private
     params.require(:item).permit(:description, :price)
   end
 
-end
 end
