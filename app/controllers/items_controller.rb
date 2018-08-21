@@ -19,9 +19,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     authorize @item
+    @item.user = current_user
     if @item.save
-      redirect_to item_path(@item)
+      redirect_to user_path(current_user)
     else
+      # raise
       render :new
     end
   end
@@ -37,7 +39,6 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-  end
 
 private
 
@@ -47,7 +48,7 @@ private
   end
 
   def item_params
-    params.require(:item).permit(:description, :price)
+    params.require(:item).permit(:description, :price, :category)
   end
 
 end
