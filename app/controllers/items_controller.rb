@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
-
+  end
 private
 
   def find_item
