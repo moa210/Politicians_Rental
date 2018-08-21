@@ -1,15 +1,15 @@
 class ItemsController < ApplicationController
-
   before_action :find_item, only: [:edit, :update, :show, :destroy]
 
   def index
-    @items = current_user.items
+    @items = policy_scope(Item).order(created_at: :desc)
   end
-  
+
   def new
     @item = Item.new
+    authorize @item
   end
-  
+
   def edit
   end
 
@@ -18,9 +18,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    authorize @item
+    @item.user = current_user
     if @item.save
-      redirect_to item_path(@item)
+      redirect_to items_path
     else
+      # raise
       render :new
     end
   end
@@ -29,22 +32,24 @@ class ItemsController < ApplicationController
     @item.destroy
     redirect_to items_path
   end
-  
+
   def update
     if @item.update(item_params)
       redirect_to item_path(@item)
     else
       render :edit
     end
+  end
 
 private
 
   def find_item
    @item = Item.find(params[:id])
+   authorize @item
   end
 
   def item_params
-    params.require(:item).permit(:description, :price)
+    params.require(:item).permit(:description, :price, :category)
   end
 
 end

@@ -1,13 +1,15 @@
 class BookingsController < ApplicationController
-  
+
 before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
+
   def index
-    @boookings = current_user.bookings
+    @boookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def edit
@@ -18,6 +20,7 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -41,6 +44,7 @@ private
 
   def find_booking
    @booking = Booking.find(params[:id])
+   authorize @booking
   end
 
   def booking_params

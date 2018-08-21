@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Item List</h1>
+  <% @items.each do |item| %>
+    <div>
+      <%= item.description %>
+      <%= item.price %>
+      <% if policy(item).edit? %>
+        <%= link_to "Update", edit_item_path(item) %>
+      <% end %>
+      <%= link_to item_path(item) do %>
+        <p>Details</p>
+      <% end %>
+    </div>
+  <% end %>
+  <% if current_user.politician? %>
+    <%= link_to new_item_path do %>
+      <p>Add Item</p>
+    <% end %>
+  <% end %>
+</div>
