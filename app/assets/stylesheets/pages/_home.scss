@@ -1,13 +1,35 @@
 // Specific CSS for your home-page
-.homepage {
-  background-image: url("https://picsum.photos/200/300/?random");
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-size: cover;
+// .homepage {
+//   background-image: url("https://picsum.photos/200/300/?random");
+//   background-repeat: no-repeat;
+//   background-size: auto;
+//   background-size: cover;
+// }
+
+#homepage-banner {
+/* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("landingpage_banner.jpg");
+
+/* Set a specific height */
+height: 75vh;
+
+/* Position and center the image to scale nicely on all screens */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+text-align: center;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-.banner {
-  // add banner code here
+#homepage-banner h1 {
+  color: white;
+}
+
+#homepage-banner p {
+  color: white;
 }
 
 .body {
@@ -26,3 +48,26 @@ a {
 .all-items-link {
   padding-bottom: 20px;
 }
+
+.container {
+
+}
+
+.landing-card {
+  border-radius: 2px;
+  border-width: 2px;
+  border: 2px solid #dce0e0;
+  width: 200px;
+  margin: 20px;
+  padding: 20px;
+}
+.item-card{
+  border-radius: 2px;
+  border-width: 2px;
+  border: 2px solid #dce0e0;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
