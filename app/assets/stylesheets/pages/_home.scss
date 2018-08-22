@@ -12,8 +12,17 @@
 
 .body {
   margin: 25px 50px 75px 100px;
+  font-size: 14px;
 }
 
+li {
+  list-style: none;
+}
+
+a {
+    color: #008489;
+    text-decoration: none;
+}
 .all-items-link {
   padding-bottom: 20px;
 }
