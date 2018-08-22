@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 2018_08_22_115329) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "total_price"
-    t.integer "days"
     t.bigint "item_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date_from"
+    t.date "date_to"
     t.index ["item_id"], name: "index_bookings_on_item_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_115329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.boolean "available", default: true
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
