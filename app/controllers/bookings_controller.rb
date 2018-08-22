@@ -1,14 +1,16 @@
 class BookingsController < ApplicationController
-  
+
 before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
+
   def index
-    @boookings = current_user.bookings
+    @boookings = policy_scope(Booking).order(created_at: :desc)
   end
 
-  def new
-    @booking = Booking.new
-  end
+  # def new
+  #   @booking = Booking.new
+  #   authorize @booking
+  # end
 
   def edit
   end
@@ -18,10 +20,14 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
   def create
     @booking = Booking.new(booking_params)
+    @item = Item.find(params[:item_id])
+    @booking.item = @item
+    @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      render 'items/show'
     end
   end
 
@@ -41,10 +47,11 @@ private
 
   def find_booking
    @booking = Booking.find(params[:id])
+   authorize @booking
   end
 
   def booking_params
-    params.require(:booking).permit(:days, :total_price)
+    params.require(:booking).permit(:days)
   end
 
 end
