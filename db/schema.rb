@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2018_08_22_121318) do
     t.datetime "updated_at", null: false
     t.string "full_name"
     t.boolean "politician", default: false
+    t.text "about"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

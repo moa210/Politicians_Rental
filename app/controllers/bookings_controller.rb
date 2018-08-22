@@ -7,15 +7,19 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
     @boookings = policy_scope(Booking).order(created_at: :desc)
   end
 
-  # def new
-  #   @booking = Booking.new
-  #   authorize @booking
-  # end
+  def new
+    @booking = Booking.new
+    @item = Item.find(params[:item_id])
+    authorize @booking
+  end
 
   def edit
   end
 
   def show
+    booking = Booking.find(params[:id])
+    @booking.days = (booking.date_to - booking.date_from)
+    total_price = @booking.total_price
   end
 
   def create
@@ -23,6 +27,8 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
     @item = Item.find(params[:item_id])
     @booking.item = @item
     @booking.user = current_user
+    @booking.days = (@booking.date_to - @booking.date_from)
+    @booking.total_price = (@booking.days * @item.price).to_f
     authorize @booking
     if @booking.save
       redirect_to booking_path(@booking)
@@ -51,7 +57,7 @@ private
   end
 
   def booking_params
-    params.require(:booking).permit(:days)
+    params.require(:booking).permit(:date_from, :date_to)
   end
 
 end
