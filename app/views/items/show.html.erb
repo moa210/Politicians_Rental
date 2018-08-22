@@ -11,10 +11,6 @@
   <h3>£<%= @item.price %></h3>
   <p><%= @item.description %></p>
 
-  <% unless policy(@item).edit? %>
-    <%= link_to "Book", new_item_booking_path(@item) %>
-  <% end %>
-
   <% if policy(@item).edit? %>
     <%= link_to "Update", edit_item_path(@item) %>
   <% end %>
