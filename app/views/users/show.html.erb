@@ -23,7 +23,9 @@
         <% current_user.bookings.each do |booking| %>
           <h3><%= booking.item.category.capitalize %>: <%= booking.item.user.full_name %></h3>
           <p><%= booking.item.description %></p>
-          <p><strong><%= booking.days %> days</strong></p>
+          <% unless booking.days.nil? %>
+            <p><strong><%= booking.days %> days</strong></p>
+          <% end %>
           <% unless booking.total_price.nil? %>
             <p>£<%= booking.total_price %></p>
           <% end %>

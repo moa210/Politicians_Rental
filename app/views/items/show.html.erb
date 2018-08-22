@@ -22,8 +22,12 @@
   <% if policy(@booking).create? %>
     <h2>New Booking</h2>
     <%= simple_form_for([@item, @booking]) do |f| %>
-      <%= f.input :days %>
+      <%= f.input :date_from, input_html: { id: 'date-from' }, as: :string %>
+      <%= f.input :date_to, input_html: { id: 'date-to' }, as: :string %>
       <%= f.submit %>
     <% end %>
   <% end %>
+
+  <%= javascript_pack_tag 'datepicker' %>
+
 </div>
