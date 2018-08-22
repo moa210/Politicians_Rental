@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Edit Yourself</h1>
+  <%= simple_form_for @user do |f| %>
+    <%= f.text_area :about, placeholder: "Describe yourself here" %>
+    <%= f.submit "Update" %>
+  <% end %>
+</div>

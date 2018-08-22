@@ -1,21 +1,108 @@
 <div class="body">
   <div class="container">
     <div class="row">
-      <h1> show personal users profile page here </h1>
+      <h1> <%= current_user.full_name %> </h1>
     </div>
-    <div class="col-lg-9 col-md-8 col-sm-12"> </div>
-        <h2> Hey I'm <%=  %></h2>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
+      <h2>About Me</h2>
+      <p><%= current_user.about %></p>
+      <%= link_to edit_user_path do %>
+        <i class="fas fa-pencil-alt"></i>
+      <% end %>
+      <% if current_user.politician? %>
+        <% unless current_user.items == [] %>
+          <h2>My Listings</h2>
+          <% current_user.items.each do |item| %>
+            <h3><%= item.category %></h3>
+            <p><%= item.description %></p>
+            <p>£<%= item.price %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% unless current_user.bookings == [] %>
+        <h2>My Bookings</h2>
+        <% current_user.bookings.each do |booking| %>
+          <h3><%= booking.item.category.capitalize %>: <%= booking.item.user.full_name %></h3>
+          <p><%= booking.item.description %></p>
+          <p><strong><%= booking.days %> days</strong></p>
+          <% unless booking.total_price.nil? %>
+            <p>£<%= booking.total_price %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+
+        <div class="col-lg-3 col-md-4 hide-sm">
+          <div id="user" class="space-4 ">
+            <div class="card">
+            <li class="active media-photo media-photo-block">
+              <img alt="Account Photo" class="img-responsive" height="225" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Alesso_profile.png" title="Account Photo" width="225">
+            </li>
+            </div>
+
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-header">Verified Info</h5>
+            <p class="card-text">Email Address</p>
+            <a href="#" class="btn btn-primary">Verify more info</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"> Connected accounts
+        </div>
+        <div class="panel-body">
+          <ul class="list-unstyled space-3" title="Connected accounts">
+            <li class="row row-table space-2">
+              <div class="col-12 col-middle">
+                Facebook
+              </div>
+              <div class="col-3 col-middle">
+                <i class="icon icon-ok h3" aria-hidden="true"></i>
+              <span class="screen-reader-only">Verified</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+       <div class="card">
+          <div class="card-body">
+            <h5 class="card-header">About me</h5>
+            <p class="card-text">Personal Information</p>
+            <p class="card-description">Short Description</p>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-9 col-md-8 col-sm-12">
+        <div>
+          <h3> Hey I'm <%=  %></h2>
+
+
+          <div class="h5 space-top-2">
+            <a href="/s/London--United-Kingdom" class="link-reset">London, United Kingdom</a>
+            <span class="text-normal">
+              Joined in <%=  %>
+            </span>
+          </div>
+
+          <div class="text-muted space-top-2">
+            <span> Report this user </span>
+          </div>
+
+          <div class="edit_profile_container space-3">
+          <a href="/users/edit">Edit Profile</a></div>
+
+      </div>
+    </div>
+
+
+
       </div>
   </div>
 </div>
