@@ -2,8 +2,7 @@
   <h1>Item List</h1>
   <% @items.each do |item| %>
     <div>
-      <%= item.description %>
-      <%= item.price %>
+      <p><%= item.description %>: £<%= item.price %><p>
       <% if policy(item).edit? %>
         <%= link_to "Update", edit_item_path(item) %>
       <% end %>
