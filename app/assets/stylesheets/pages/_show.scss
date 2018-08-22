@@ -9,8 +9,10 @@
 .card{
   border-radius: 2px;
   border-width: 2px;
-  border: 1px solid #dce0e0;
-  width: 30rem;
+  border: 2px solid #dce0e0;
+  padding: 20px;
+  margin: 10px;
+  transition: 0.3s;
 }
 
 .card-header{
@@ -20,3 +22,5 @@
   padding-bottom: 12px;
   border-bottom: 1px solid
 }
+
+
