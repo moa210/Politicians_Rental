@@ -1,0 +1,32 @@
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-header-avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+.card-body {
+  text-decoration: none !important;
+  padding: 0px;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
+  padding: 10px;
+} h3 {
+  margin-top: 0px;
+  font-size: 14px;
+}
+.item-card-home {
+  padding: 0px;
+  border-width: 1px;
+  border-color: #57606E;
+}
+
+.card-footer {
+
+}

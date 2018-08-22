@@ -11,6 +11,7 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Avatar" style="width:100%">
                 <div class="card-body">
                   <p class="card-description"> <%= item.description %>: £<%= item.price %> </p>
+                  <p><%= item.user.full_name %></p>
                     <% if policy(item).edit? %>
                     <%= link_to "Update", edit_item_path(item) %>
 
