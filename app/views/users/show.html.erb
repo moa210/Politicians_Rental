@@ -1,51 +1,46 @@
 <div class="body">
   <div class="container">
-
         <div class="col-lg-3 col-md-4 hide-sm">
           <div id="user" class="space-4 ">
             <div class="card">
-            <li class="active media-photo media-photo-block">
-              <img alt="Account Photo" class="img-responsive" height="225" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Alesso_profile.png" title="Account Photo" width="225">
-            </li>
+              <li class="active media-photo media-photo-block">
+                <img alt="Account Photo" class="img-responsive" height="225" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Alesso_profile.png" title="Account Photo" width="225">
+              </li>
             </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-header">Verified Info</h5>
+                <p class="card-text">Email Address</p>
+                <a href="#" class="btn btn-primary">Verify more info</a>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"> Connected accounts
+            </div>
+            <div class="panel-body">
+              <ul class="list-unstyled space-3" title="Connected accounts">
+                <li class="row row-table space-2">
+                  <div class="col-12 col-middle">
+                    Facebook
+                  </div>
+                  <div class="col-3 col-middle">
+                    <i class="icon icon-ok h3" aria-hidden="true"></i>
+                  <span class="screen-reader-only">Verified</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-header">Verified Info</h5>
-            <p class="card-text">Email Address</p>
-            <a href="#" class="btn btn-primary">Verify more info</a>
+         <div class="card">
+            <div class="card-body">
+              <h5 class="card-header">About me</h5>
+              <p class="card-text">Personal Information</p>
+              <p class="card-description">Short Description</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header"> Connected accounts
-        </div>
-        <div class="panel-body">
-          <ul class="list-unstyled space-3" title="Connected accounts">
-            <li class="row row-table space-2">
-              <div class="col-12 col-middle">
-                Facebook
-              </div>
-              <div class="col-3 col-middle">
-                <i class="icon icon-ok h3" aria-hidden="true"></i>
-              <span class="screen-reader-only">Verified</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-       <div class="card">
-          <div class="card-body">
-            <h5 class="card-header">About me</h5>
-            <p class="card-text">Personal Information</p>
-            <p class="card-description">Short Description</p>
-
-          </div>
-        </div>
-      </div>
 
 
 
@@ -67,7 +62,7 @@
 
           <div class="edit_profile_container space-3">
           <a href="/users/edit">Edit Profile</a></div>
-
+          <h2>TITLE</h2>
       </div>
     </div>
 
@@ -76,11 +71,11 @@
       </div>
   </div>
 </div>
-
+  <% if false %>
     <div class="row">
       <h1> <% current_user.full_name %> </h1>
     </div>
-      <h2>About Me</h2>
+      <!-- <h2>About Me</h2> -->
       <p><%= current_user.about %></p>
       <%= link_to edit_user_path do %>
         <i class="fas fa-pencil-alt"></i>
@@ -108,4 +103,5 @@
           <% end %>
         <% end %>
       <% end %>
+  <% end %>
   </div>
