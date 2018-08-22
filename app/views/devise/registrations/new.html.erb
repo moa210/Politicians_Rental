@@ -20,6 +20,8 @@
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
+        <%= f.label :politician, "Politician?" %>
+        <%= f.check_box :politician %>
       </div>
 
       <div class="form-actions">
