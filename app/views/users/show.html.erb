@@ -1,22 +1,27 @@
 <div class="body">
   <div class="container">
     <div class="row">
-      <h1> show personal users profile page here </h1>
+      <h1> <%= current_user.full_name %> </h1>
     </div>
-    <div class="col-lg-9 col-md-8 col-sm-12"> </div>
-        <h2> Hey I'm <%=  %></h2>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-        <p> seems this is the only one we need to take care of?? </p>
-      </div>
+      <h2>About Me</h2>
+      <% if current_user.about.nil? %>
+        <%= simple_form_for @user do |f| %>
+          <%= f.text_area :about, placeholder: "Describe yourself here" %>
+          <%= f.submit %>
+        <% end %>
+      <% else %>
+        <p><%= current_user.about %></p>
+        <%= link_to edit_user_path do %>
+          <i class="fas fa-pencil-alt"></i>
+        <% end %>
+      <% end %>
+      <h2>My listings</h2>
+      <% current_user.items.each do |item| %>
+        <h3><%= item.category %></h3>
+        <p><%= item.description %></p>
+        <p>£<%= item.price %></p>
+      <% end %>
+  </div>
   </div>
 </div>
 

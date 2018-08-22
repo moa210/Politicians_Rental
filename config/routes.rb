@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :items do
     resources :bookings, only: [:new, :create]
   end
-  get "users/:id", to: "users#show", as: "user"
-
+  resources :users, only: [:show, :edit, :update]
   # get 'item/show'
   # get 'booking/show'
   # get 'booking/edit']
