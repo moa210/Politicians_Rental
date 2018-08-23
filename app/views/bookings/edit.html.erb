@@ -1,2 +1,9 @@
-<h1>Booking#edit</h1>
-<p>Find me in app/views/booking/edit.html.erb</p>
+<div class="container">
+  <h2>Edit Booking</h2>
+  <%= simple_form_for([@item, @booking]) do |f| %>
+    <%= f.input :date_from, input_html: { id: 'date-from' }, as: :string %>
+    <%= f.input :date_to, input_html: { id: 'date-to' }, as: :string %>
+    <%= f.submit %>
+  <% end %>
+  <%= javascript_pack_tag 'datepicker' %>
+</div>

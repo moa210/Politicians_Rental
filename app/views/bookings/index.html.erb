@@ -27,9 +27,7 @@
                     <p>Price: £<%= booking.total_price %> </p>
                     <p>Belongs to: <%= booking.item.user.full_name %></p>
                     <% if policy(booking).edit? %>
-                      <button type="button" class="btn btn-info">
-                      <%= link_to "Update", edit_booking_path(booking)%>
-                      </button>
+                      <%= link_to "Update", edit_item_booking_path(booking.item, booking), class: "btn btn-info" %>
                     <% end %>
                     <% if policy(booking).destroy? %>
                       <button type="button" class="btn btn-info">
