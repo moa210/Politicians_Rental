@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Bookings you have made</h1>
+   <% if current_user.politician? %>
+    <%= link_to new_item_path do %>
+      <p>Add Item</p>
+    <% end %>
+  <% end %>
+  <div class="container">
+    <div class="row">
+      <% @items.each do |item| %>
+      <% if item.user == current_user %>
+        <%= link_to booking_path(item) do %>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="item-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Avatar" style="width:100%">
+                <div class="card-body">
+                  <p class="card-description"><%= item.description%>:</p>
+                    <p>Price: £<%= item.price %> </p>
+                    <% if policy(item).edit? %>
+                      <button type="button" class="btn btn-info">
+                      <%= link_to "Update", edit_item_path(item)%>
+                      </button>
+                    <% end %>
+                    <% if policy(item).destroy? %>
+                      <button type="button" class="btn btn-info">
+                      <%= link_to item_path(item),
+                        method: :delete,
+                        data: { confirm: "Are you sure you want to delete booking for #{item.description}?" } do %>
+                        <i class="far fa-trash-alt" id="bin"></i>
+                         <% end %>
+                      </button>
+                    <% end %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+ </div>
