@@ -1,3 +1,4 @@
+<hr>
 <div id="homepage-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%= image_path 'landingpage_banner.jpg' %>);">
   <div class="container">
     <div>
@@ -9,7 +10,7 @@
 
 <!-- Things for rent container -->
 <div class="container">
-  <h2>Things for Rent</h2>
+  <h2>Items for Rent</h2>
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-sm-3 col-xs-6">
@@ -89,6 +90,19 @@
     <%= link_to 'All Items', items_path %>
 </div>
 
+<div class="footer">
+  <!-- <div class="footer-links">
+    <a href="#"><i class="fa fa-github"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+  </div>
+ -->  <div class="footer-copyright">
+    © 2018 PoliticianRental.com. All rights reserved
+  </div>
+</div>
+
 <!-- <div class="container">
   <div class="row">
     <div class="col-xs-12 col-md-6">
@@ -150,3 +164,4 @@
     </div>
   </div> -->
 </div>
+
