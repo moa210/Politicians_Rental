@@ -50,7 +50,7 @@ private
   end
 
   def item_params
-    params.require(:item).permit(:description, :price, :category)
+    params.require(:item).permit(:description, :price, :category, :photo)
   end
 
 end

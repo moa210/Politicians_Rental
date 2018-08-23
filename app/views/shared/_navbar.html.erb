@@ -10,12 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <div class="search-container">
-        <form action="/action_page.php">
-          <input type="text" placeholder="Search.." name="search">
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-      </div>
+
       <%= link_to "My Items", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Bookings", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Profile", "#", class: "navbar-wagon-item navbar-wagon-link" %>

@@ -15,70 +15,16 @@
       <div class="col-sm-3 col-xs-6">
         <div class="item-card-home">
           <div class="card-header">
-            <p>Jeremy Corbyn</p>
+            <p><%= item.user.full_name %></p>
             <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'jeremy_corbyn.jpg' %>)"></div>
+              <div class="card-header-avatar" style="background-image: url(<%= cl_image_path item.user.photo %>)"></div>
             <% end %>
           </div>
           <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'house_all.jpg' %>)">
+            <div class="card-body" style="background-image: url(<%= image_path item.photo %>)">
             </div>
             <div class="card-footer">
               <h3><%= item.description %></h3>
-              <p><%= item.price %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="item-card-home">
-          <div class="card-header">
-            <p>Theresa May</p>
-            <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'theresa_may.jpg' %>)"></div>
-            <% end %>
-          </div>
-          <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'wheat_fields_TM.jpg' %>)">
-            </div>
-            <div class="card-footer">
-              <h3>Wheat Fields</h3>
-              <p><%= item.price %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="item-card-home">
-          <div class="card-header">
-            <p>Ed Milliband</p>
-            <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'ed_milliband.jpg' %>)"></div>
-            <% end %>
-          </div>
-          <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'bacon_sandwich.jpg' %>)">
-            </div>
-            <div class="card-footer">
-              <h3>Bacon Sandwich</h3>
-              <p><%= item.price %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="item-card-home">
-          <div class="card-header">
-            <p>Jeremy Hunt</p>
-            <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'jeremy_hunt.jpg' %>)"></div>
-            <% end %>
-          </div>
-          <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'nhs_JH.png' %>)">
-            </div>
-            <div class="card-footer">
-              <h3>The NHS</h3>
               <p><%= item.price %></p>
             </div>
           <% end %>

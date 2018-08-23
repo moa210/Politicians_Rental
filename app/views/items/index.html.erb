@@ -8,7 +8,7 @@
         <%= link_to item_path(item) do %>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <div class="item-card">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Avatar" style="width:100%">
+              <img src=item.photo alt="test" class="test">
                 <div class="card-body">
                   <p class="card-description"> <%= item.description %>: £<%= item.price %> </p>
                   <p><%= item.user.full_name %></p>
@@ -33,3 +33,4 @@
     <% end %>
   <% end %>
 </div>
+
