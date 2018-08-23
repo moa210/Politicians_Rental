@@ -14,7 +14,7 @@
         <% end %>
         </p>
         <p>Price: £<%= @booking.total_price %> </p>
-        <p>Blongs to: <%= @booking.item.user.full_name %></p>
+        <p>Belongs to: <%= @booking.item.user.full_name %></p>
         <% if policy(@booking).edit? %>
           <button type="button" class="btn btn-info">
             <% if policy(@booking).edit? %>
@@ -23,11 +23,9 @@
           </button>
           <button type="button" class="btn btn-info">
             <% if policy(@booking).destroy? %>
-              <%= link_to booking_path(@booking),
+              <%= link_to "Delete", booking_path(@booking),
               method: :delete,
-              data: { confirm: "Are you sure you ant to delete booking for #{@booking.item.description}?" } do %>
-              <i class="far fa-trash-alt" id="bin"></i>
-            <% end %>
+              data: { confirm: "Are you sure you want to delete booking for #{@booking.item.description}?" }  %>
             <% end %>
           </button>
         <% end %>

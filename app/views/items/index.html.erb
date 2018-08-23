@@ -14,14 +14,16 @@
                     data: { confirm: "Are you sure you want to delete #{item.user.full_name}?" } do %>
                   <i class="far fa-trash-alt" id="bin"></i>
                 <% end %>
-
               <% end %>
-
             </div>
             <div class="back flexbox">
               <p class="card-description"> <%= item.description %></p>
               <p><strong>£<%= item.price %></strong></p>
-              <%= link_to "Book", item_path(item) %>
+              <% if item.available %>
+                <%= link_to "Book", item_path(item) %>
+              <% else %>
+                <p>Not Available</p>
+              <% end %>
               <% if policy(item).edit? %>
                 <%= link_to edit_item_path(item) do  %>
                   <i class="fas fa-pencil-alt" id="pencil"></i>
