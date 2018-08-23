@@ -7,7 +7,7 @@
         <p>Period:
         <% if (@booking.days).to_i <= 1 %>
           <%= @booking.days %>
-          <%= "day"  %>
+         g <%= "day"  %>
         <% else  %>
           <%= @booking.days %>
           <%= "days"  %>
@@ -16,18 +16,14 @@
         <p>Price: £<%= @booking.total_price %> </p>
         <p>Belongs to: <%= @booking.item.user.full_name %></p>
         <% if policy(@booking).edit? %>
-          <button type="button" class="btn btn-info">
             <% if policy(@booking).edit? %>
-            <%= link_to "Update", edit_booking_path(@booking)%>
+             <%= link_to "Update", edit_item_booking_path(@booking.item, @booking), class: "btn btn-info"%>
             <% end %>
-          </button>
-          <button type="button" class="btn btn-info">
             <% if policy(@booking).destroy? %>
               <%= link_to "Delete", booking_path(@booking),
               method: :delete,
-              data: { confirm: "Are you sure you want to delete booking for #{@booking.item.description}?" }  %>
+              data: { confirm: "Are you sure you want to delete booking for #{@booking.item.description}?" }, class: "btn btn-info" %>
             <% end %>
-          </button>
         <% end %>
       </div>
   </div>

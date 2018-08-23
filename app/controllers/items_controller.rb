@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
     else
       @items = policy_scope(Item)
     end
+    @users = User.all
   end
 
   def user_items
@@ -65,7 +66,7 @@ private
   end
 
   def item_params
-    params.require(:item).permit(:description, :price, :category, :photo)
+    params.require(:item).permit(:description, :price, :category, :photo, :available)
   end
 
 end
