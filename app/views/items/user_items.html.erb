@@ -7,35 +7,25 @@
   <% end %>
   <div class="container">
     <div class="row">
-      <% @bookings.each do |booking| %>
-      <% if booking.user == current_user %>
-        <%= link_to booking_path(booking) do %>
+      <% @items.each do |item| %>
+      <% if item.user == current_user %>
+        <%= link_to booking_path(item) do %>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <div class="item-card">
               <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Avatar" style="width:100%">
                 <div class="card-body">
-                  <p class="card-description"><%= booking.item.description%>:</p>
-                  <p>Period:
-                    <% if (booking.days).to_i <= 1 %>
-                      <%= booking.days %>
-                      <%= "day"  %>
-                    <% else  %>
-                      <%= booking.days %>
-                      <%= "days"  %>
-                    <% end %>
-                    </p>
-                    <p>Price: £<%= booking.total_price %> </p>
-                    <p>Belongs to: <%= booking.item.user.full_name %></p>
-                    <% if policy(booking).edit? %>
+                  <p class="card-description"><%= item.description%>:</p>
+                    <p>Price: £<%= item.price %> </p>
+                    <% if policy(item).edit? %>
                       <button type="button" class="btn btn-info">
-                      <%= link_to "Update", edit_booking_path(booking)%>
+                      <%= link_to "Update", edit_item_path(item)%>
                       </button>
                     <% end %>
-                    <% if policy(booking).destroy? %>
+                    <% if policy(item).destroy? %>
                       <button type="button" class="btn btn-info">
-                      <%= link_to booking_path(booking),
+                      <%= link_to item_path(item),
                         method: :delete,
-                        data: { confirm: "Are you sure you want to delete booking for #{booking.item.description}?" } do %>
+                        data: { confirm: "Are you sure you want to delete booking for #{item.description}?" } do %>
                         <i class="far fa-trash-alt" id="bin"></i>
                          <% end %>
                       </button>

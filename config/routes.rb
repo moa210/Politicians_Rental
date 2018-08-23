@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # authentication
   devise_for :users
   resources :bookings, except: [:new, :create]
+  get 'user_items', to: 'items#user_items', as: 'user_items'
   resources :items do
     resources :bookings, only: [:new, :create]
   end
