@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :items
   has_many :bookings
   validates :full_name, presence: true
+
 end
