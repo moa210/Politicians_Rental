@@ -8,7 +8,7 @@
   <% else %>
     <h1><%= @item.user.full_name %>'s listing</h1>
   <% end %>
-  <h3>£<%= @item.price %></h3>
+  <p><strong>£<%= @item.price %></strong></p>
   <p><%= @item.description %></p>
 
   <% if policy(@item).edit? %>
