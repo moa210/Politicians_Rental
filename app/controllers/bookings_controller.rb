@@ -46,7 +46,9 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
   end
 
   def destroy
-    @restaurant.destroy
+    @booking.destroy
+    @bookings = policy_scope(Booking)
+    render "bookings/index"
   end
 
 private
