@@ -48,8 +48,13 @@ li {
 }
 
 a {
-    color: #008489;
+    color: #d88a25;
     text-decoration: none;
+}
+
+a:hover {
+  color: #c27c21;
+  text-decoration: none;
 }
 .all-items-link {
   padding-bottom: 20px;
