@@ -65,11 +65,12 @@
   position: absolute;
   bottom: 15px;
   right: 15px;
-  color: rgba(0,0,0,0.8);
+  color: #333333;
 }
 
 #pencil:hover {
-  color: rgba(0,0,0,0.5);
+  color: #333333;
+  opacity: 0.6;
 }
 
 #bin:hover {
