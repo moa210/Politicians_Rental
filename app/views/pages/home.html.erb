@@ -1,4 +1,5 @@
-<div id="homepage-banner">
+<hr>
+<div id="homepage-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<%= image_path 'landingpage_banner.jpg' %>);">
   <div class="container">
     <div>
       <h1>Politician rental</h1>
@@ -9,19 +10,19 @@
 
 <!-- Things for rent container -->
 <div class="container">
-  <h2>Things for Rent</h2>
+  <h2>Items for Rent</h2>
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-sm-3 col-xs-6">
         <div class="item-card-home">
           <div class="card-header">
-            <p>Jeremy Corbyn</p>
+            <p><%= item.user.full_name %></p>
             <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'jeremy_corbyn.jpg' %>)"></div>
+              <div class="card-header-avatar" style="background-image: url(<%= cl_image_path item.user.photo %>)"></div>
             <% end %>
           </div>
           <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'house_all.jpg' %>)">
+            <div class="card-body" style="background-image: url(<%= image_path item.photo %>)">
             </div>
             <div class="card-footer">
               <h3><%= item.description %></h3>
@@ -30,61 +31,20 @@
           <% end %>
         </div>
       </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="item-card-home">
-          <div class="card-header">
-            <p>Theresa May</p>
-            <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'theresa_may.jpg' %>)"></div>
-            <% end %>
-          </div>
-          <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'wheat_fields_TM.jpg' %>)">
-            </div>
-            <div class="card-footer">
-              <h3>Wheat Fields</h3>
-              <p><%= item.price %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="item-card-home">
-          <div class="card-header">
-            <p>Ed Milliband</p>
-            <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'ed_milliband.jpg' %>)"></div>
-            <% end %>
-          </div>
-          <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'bacon_sandwich.jpg' %>)">
-            </div>
-            <div class="card-footer">
-              <h3>Bacon Sandwich</h3>
-              <p><%= item.price %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-3 col-xs-6">
-        <div class="item-card-home">
-          <div class="card-header">
-            <p>Jeremy Hunt</p>
-            <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= image_path 'jeremy_hunt.jpg' %>)"></div>
-            <% end %>
-          </div>
-          <%= link_to item_path(item) do %>
-            <div class="card-body" style="background-image: url(<%= image_path 'nhs_JH.png' %>)">
-            </div>
-            <div class="card-footer">
-              <h3>The NHS</h3>
-              <p><%= item.price %></p>
-            </div>
-          <% end %>
-        </div>
-      </div>
     <% end %>
+  </div>
+</div>
+
+<div class="footer">
+  <!-- <div class="footer-links">
+    <a href="#"><i class="fa fa-github"></i></a>
+    <a href="#"><i class="fa fa-instagram"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter"></i></a>
+    <a href="#"><i class="fa fa-linkedin"></i></a>
+  </div>
+ -->  <div class="footer-copyright">
+    © 2018 PoliticianRental.com. All rights reserved
   </div>
 </div>
 
@@ -96,7 +56,7 @@
         <div class="cards">
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4">
-              <div class="item-card" style="background-image: url(images/logo.png)">
+              <div class="item-card" style="background-image: url(<%= image_path 'logo.png' %>)">
                 Logo
               </div>
             </div>
@@ -149,3 +109,4 @@
     </div>
   </div> -->
 </div>
+
