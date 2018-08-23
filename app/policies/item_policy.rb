@@ -2,8 +2,12 @@ class ItemPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all.order(created_at: :desc)
     end
+  end
+
+  def user_items?
+    user.politician
   end
 
   def create?

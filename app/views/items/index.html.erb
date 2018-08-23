@@ -1,7 +1,6 @@
 <div class="container">
   <h1>Item List</h1>
 
-
   <div class="container">
     <div class="row">
       <% @items.each do |item| %>
@@ -18,14 +17,36 @@
                  <% end %>
                 </div>
             </div>
+
+  <div class="container cards-body">
+    <% @items.each do |item| %>
+      <div class="card-container col-xs-12 col-sm-6 col-md-3">
+        <div class="card card<%=item.id%>">
+          <div class="front" style="background-image:  linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 70%), url(<%= image_path "bicycle_all.jpg" %>);">
+            <h2><%= item.user.full_name %>'s <%= item.category %></h2>
+            <% if policy(item).edit? %>
+              <%= link_to item_path(item),
+                  method: :delete,
+                  data: { confirm: "Are you sure you want to delete #{item.user.full_name}?" } do %>
+                <i class="far fa-trash-alt" id="bin"></i>
+              <% end %>
+            <% end %>
+
           </div>
-        <% end %>
-      <% end %>
-    </div>
+          <div class="back flexbox">
+            <p class="card-description"> <%= item.description %></p>
+            <p><strong>£<%= item.price %></strong></p>
+            <%= link_to "Book", item_path(item) %>
+            <% if policy(item).edit? %>
+              <%= link_to edit_item_path(item) do  %>
+                <i class="fas fa-pencil-alt" id="pencil"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-
-
 
   <% if current_user.politician? %>
     <%= link_to new_item_path do %>

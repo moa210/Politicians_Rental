@@ -2,7 +2,22 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:edit, :update, :show, :destroy]
 
   def index
-    @items = policy_scope(Item).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = " \
+        items.description @@ :query \
+        OR items.category @@ :query \
+        OR users.full_name @@ :query \
+        OR users.email @@ :query \
+      "
+      @items = policy_scope(Item).joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @items = policy_scope(Item)
+    end
+  end
+
+  def user_items
+    @items = Item.where(user_id: current_user)
+    authorize @items
   end
 
   def new
@@ -31,7 +46,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to items_path
+    redirect_to user_items_path
   end
 
   def update

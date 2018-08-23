@@ -4,7 +4,7 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
 
 
   def index
-    @boookings = policy_scope(Booking).order(created_at: :desc)
+    @bookings = policy_scope(Booking)
   end
 
   def new
@@ -46,7 +46,9 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
   end
 
   def destroy
-    @restaurant.destroy
+    @booking.destroy
+    @bookings = policy_scope(Booking)
+    render "bookings/index"
   end
 
 private

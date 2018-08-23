@@ -12,6 +12,8 @@ gem 'pundit'
 gem 'carrierwave', '~> 1.2'
 gem 'cloudinary'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'pg_search'
+
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
