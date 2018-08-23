@@ -5,14 +5,13 @@
       <p>Add Item</p>
     <% end %>
   <% end %>
-  <div class="container">
     <div class="row">
       <% @bookings.each do |booking| %>
       <% if booking.user == current_user %>
         <%= link_to booking_path(booking) do %>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
             <div class="item-card">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Avatar" style="width:100%">
+              <div><%= cl_image_tag booking.item.photo %></div>
                 <div class="card-body">
                   <p class="card-description"><%= booking.item.description%>:</p>
                   <p>Period:
@@ -30,7 +29,7 @@
                       <%= link_to "Update", edit_item_booking_path(booking.item, booking), class: "btn btn-info" %>
                     <% end %>
                     <% if policy(booking).destroy? %>
-                      <%= link_to "Delete", booking_path(booking),
+                      <%= link_to "Cancel", item_booking_path(booking.item, booking),
                         method: :delete,
                         data: { confirm: "Are you sure you want to delete booking for #{booking.item.description}?" }, class: "btn btn-info" %>
                     <% end %>
@@ -41,5 +40,4 @@
       <% end %>
       <% end %>
     </div>
-  </div>
  </div>

@@ -1,8 +1,8 @@
 
 <div class="container">
-  <div class="item-card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Avatar" style="width:100%">
-      <div class="card-body">
+  <div class="card-container">
+      <div>
+        <%= cl_image_tag @booking.item.photo, class: "card-container" %>
         <p class="card-decription"><%= @booking.item.description%>:</p>
         <p>Period:
         <% if (@booking.days).to_i <= 1 %>
@@ -18,7 +18,7 @@
         <% if policy(@booking).edit? %>
           <button type="button" class="btn btn-info">
             <% if policy(@booking).edit? %>
-            <%= link_to "Update", edit_booking_path(@booking)%>
+            <%= link_to "Update", edit_item_booking_path(@booking)%>
             <% end %>
           </button>
           <button type="button" class="btn btn-info">
@@ -32,3 +32,4 @@
       </div>
   </div>
 </div>
+
