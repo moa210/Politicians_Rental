@@ -12,7 +12,13 @@
   flex-direction: column;
 }
 
-.card {
+.flexbox2 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.card-index {
   width: 100%;
   height: 100%;
   position: absolute;
