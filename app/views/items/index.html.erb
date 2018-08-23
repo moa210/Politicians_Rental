@@ -3,43 +3,44 @@
 
   <div class="cards-body">
     <div class="row">
-      <% @items.each do |item| %>
+      <% @users.each do |user| %>
         <div class="card-container col-xs-12 col-sm-6 col-md-3">
-          <div class="card-index card<%=item.id%>">
-            <div class="front" style="background-image:  linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 70%), url(<%= image_path "bicycle_all.jpg" %>);">
-              <h2><%= item.user.full_name %>'s <%= item.category %></h2>
-              <% if policy(item).edit? %>
-                <%= link_to item_path(item),
-                    method: :delete,
-                    data: { confirm: "Are you sure you want to delete #{item.user.full_name}?" } do %>
-                  <i class="far fa-trash-alt" id="bin"></i>
-                <% end %>
-              <% end %>
+          <div class="card-index card<%=user.id%>">
+            <div class="front" style="background-image:  linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path user.photo %>);">
+              <% names = user.full_name.split(" ") %>
+              <h2 id="first"><%= names.first %></h2>
+              <h2 id="last"><%= names.last %></h2>
             </div>
             <div class="back flexbox">
-              <p class="card-description"> <%= item.description %></p>
-              <p><strong>£<%= item.price %></strong></p>
-              <% if item.available %>
-                <%= link_to "Book", item_path(item) %>
-              <% else %>
-                <p>Not Available</p>
-              <% end %>
-              <% if policy(item).edit? %>
-                <%= link_to edit_item_path(item) do  %>
-                  <i class="fas fa-pencil-alt" id="pencil"></i>
-                <% end %>
-              <% end %>
+              <ol>
+                <% user.items.each do |item| %>
+                  <li><p><%= item.description %>: <strong>£<%= item.price %></strong></p>
+                    <% if current_user == user %>
+                      <%= link_to edit_item_path(item) do  %>
+                        <i class="fas fa-pencil-alt change"></i>
+                      <% end %>
+                      <%= link_to item_path(item),
+                          method: :delete,
+                          data: { confirm: "Are you sure you want to delete #{user.full_name}?" } do %>
+                        <i class="far fa-trash-alt change"></i>
+                      <% end %>
+                    <% elsif item.available %>
+                      <%= link_to "Book", item_path(item) %>
+                    <% else %>
+                      <p>Not Available</p>
+                    <% end %>
+                    <% if current_user == user %>
+                      <%=  link_to new_item_path do %>
+                        <i class="fas fa-plus" id="add"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </li>
+              </ol>
             </div>
           </div>
         </div>
       <% end %>
     </div>
   </div>
-
-  <% if current_user.politician? %>
-    <%= link_to new_item_path do %>
-      <p>Add Item</p>
-    <% end %>
-  <% end %>
 </div>
-

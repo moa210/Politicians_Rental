@@ -1,6 +1,6 @@
 .card-container {
-  width: 300px;
-  height: 200px;
+  width: 250px;
+  height: 350px;
   position: relative;
   perspective: 800px;
   border-radius: 6px;
@@ -60,31 +60,31 @@
   align-items: center;
 }
 
-#bin {
+.change {
+  margin: 5px;
+
+}
+
+#add {
   position: absolute;
   bottom: 15px;
   right: 15px;
-  color: white;
+
 }
 
-#pencil {
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
-  color: #333333;
-}
-
-#pencil:hover {
-  color: #333333;
-  opacity: 0.6;
-}
-
-#bin:hover {
-  color: rgb(150,150,150);
-}
 
 .front {
   background-size: cover;
+  #first {
+  position: absolute;
+  bottom: 52px;
+  padding: 16px;
+  }
+  #last {
+    position: absolute;
+    bottom: 8px;
+    padding: 16px;
+  }
   h2 {
     color: white;
   }
@@ -92,4 +92,18 @@
 
 .back {
   background-color: white;
+  p {
+    margin: 5px;
+  }
+  .users {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+}
+  ol {
+    padding: 20px 15px;
+  }
+.card-booking{
+  color: white;
+  text-align: center;
 }

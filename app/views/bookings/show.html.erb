@@ -1,35 +1,36 @@
 
 <div class="container">
-  <div class="card-container">
-      <div>
-        <%= cl_image_tag @booking.item.photo, class: "card-container" %>
-        <p class="card-decription"><%= @booking.item.description%>:</p>
-        <p>Period:
-        <% if (@booking.days).to_i <= 1 %>
-          <%= @booking.days %>
-          <%= "day"  %>
-        <% else  %>
-          <%= @booking.days %>
-          <%= "days"  %>
-        <% end %>
-        </p>
-        <p>Price: £<%= @booking.total_price %> </p>
-        <p>Belongs to: <%= @booking.item.user.full_name %></p>
-        <% if policy(@booking).edit? %>
-          <button type="button" class="btn btn-info">
+  <div class="row">
+    <h2>Thank you for booking with <%= @booking.item.user.full_name %>!</h2>
+  <div class="card-body">
+      <div class="card-container card-booking">
+        <div class="front card-index" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path @booking.item.photo %>);">
+          <p></p>
+          <p><%= @booking.item.description%>:</p>
+          <p>Period:
+          <% if (@booking.days).to_i <= 1 %>
+            <%= @booking.days %>
+           g <%= "day"  %>
+          <% else  %>
+            <%= @booking.days %>
+            <%= "days"  %>
+          <% end %>
+          </p>
+          <p>Price: £<%= @booking.total_price %> </p>
+          <p>Belongs to: <%= @booking.item.user.full_name %></p>
+          <% if policy(@booking).edit? %>
             <% if policy(@booking).edit? %>
-            <%= link_to "Update", edit_item_booking_path(@booking)%>
-            <% end %>
-          </button>
-          <button type="button" class="btn btn-info">
-            <% if policy(@booking).destroy? %>
-              <%= link_to "Delete", booking_path(@booking),
-              method: :delete,
-              data: { confirm: "Are you sure you want to delete booking for #{@booking.item.description}?" }  %>
-            <% end %>
-          </button>
-        <% end %>
+              <p><%= link_to "Update", edit_item_booking_path(@booking)%></p>
+              <% end %>
+              <% if policy(@booking).destroy? %>
+               <p><%= link_to "Delete", booking_path(@booking),
+                method: :delete,
+                data: { confirm: "Are you sure you want to delete booking for #{@booking.item.description}?" }%></p>
+              <% end %>
+          <% end %>
+        </div>
       </div>
   </div>
+</div>
 </div>
 
