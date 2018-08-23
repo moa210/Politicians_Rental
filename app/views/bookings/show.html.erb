@@ -1,9 +1,36 @@
-<h1>Booking#show</h1>
-<p>Find me in app/views/booking/show.html.erb</p>
 
-
-<%= @booking.days %> days
-<% if policy(@booking).edit? %>
-  <%= link_to "Update", edit_booking_path(@booking) %>
-<% end %>
-
+<div class="container">
+  <div class="item-card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Avatar" style="width:100%">
+      <div class="card-body">
+        <p class="card-decription"><%= @booking.item.description%>:</p>
+        <p>Period:
+        <% if (@booking.days).to_i <= 1 %>
+          <%= @booking.days %>
+          <%= "day"  %>
+        <% else  %>
+          <%= @booking.days %>
+          <%= "days"  %>
+        <% end %>
+        </p>
+        <p>Price: £<%= @booking.total_price %> </p>
+        <p>Blongs to: <%= @booking.item.user.full_name %></p>
+        <% if policy(@booking).edit? %>
+          <button type="button" class="btn btn-info">
+            <% if policy(@booking).edit? %>
+            <%= link_to "Update", edit_booking_path(@booking)%>
+            <% end %>
+          </button>
+          <button type="button" class="btn btn-info">
+            <% if policy(@booking).destroy? %>
+              <%= link_to booking_path(@booking),
+              method: :delete,
+              data: { confirm: "Are you sure you ant to delete booking for #{@booking.item.description}?" } do %>
+              <i class="far fa-trash-alt" id="bin"></i>
+            <% end %>
+            <% end %>
+          </button>
+        <% end %>
+      </div>
+  </div>
+</div>

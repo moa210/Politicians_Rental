@@ -6,6 +6,10 @@ class ItemPolicy < ApplicationPolicy
     end
   end
 
+  def user_items?
+    user.politician
+  end
+
   def create?
     user.politician
   end

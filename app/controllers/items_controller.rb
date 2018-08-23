@@ -15,6 +15,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def user_items
+    @items = Item.where(user_id: current_user)
+    authorize @items
+  end
+
   def new
     @item = Item.new
     authorize @item
@@ -41,7 +46,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to items_path
+    redirect_to user_items_path
   end
 
   def update
