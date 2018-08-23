@@ -13,8 +13,8 @@
   <h2>Items for Rent</h2>
   <div class="row">
     <% @items.each do |item| %>
-      <div class="col-sm-3 col-xs-6">
-        <div class="item-card-home">
+      <div class="col-sm-4 col-xs-6 ">
+        <div class="item-card-home whole-card">
           <div class="card-header">
             <p><%= item.user.full_name %></p>
             <%= link_to user_path(item.user) do %>
@@ -26,7 +26,7 @@
             </div>
             <div class="card-footer">
               <h3><%= item.description %></h3>
-              <p><%= item.price %></p>
+              <p>£<%= item.price %></p>
             </div>
           <% end %>
         </div>
