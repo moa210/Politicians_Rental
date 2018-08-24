@@ -1,15 +1,19 @@
-<div class="container">
-  <h1>Edit Item</h1>
-  <%= simple_form_for @item do |f| %>
-    <%= f.label :category %>:
-    <%= f.select :category, [['Accommodation','accommodation'],['Clothing','clothing'],['Transport','transport'],\
-    ["Miscellaneous","miscellaneous"]] %>
-
-    <%= f.input :description %>
-    <%= f.input :price, input_html: { type: "number" } %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.submit %>
-  <% end %>
+<div class="banner-custom" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path @item.photo %>);">
+  <div class="background-cover" >
+    <div class="form-container flexbox white">
+      <h1>Edit your <%= @item.description.downcase %></h1>
+      <div class="front white-center opacity-form">
+      <%= simple_form_for @item do |f| %>
+        <%= f.label :category, required: false %>:
+        <%= f.select :category, [['Accommodation','accommodation'],['Clothing','clothing'],['Transport','transport'],\
+        ["Miscellaneous","miscellaneous"]], required: false %>
+        <%= f.input :description, required: false %>
+        <%= f.input :price, input_html: { type: "number" }, required: false %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
 </div>
 

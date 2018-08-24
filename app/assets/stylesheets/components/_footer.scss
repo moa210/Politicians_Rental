@@ -1,13 +1,11 @@
 .custom-footer {
   display: flex;
-  height: 70px;
+  min-height: 70px;
   width: 100vw;
   background: #F4F4F4;
   align-items: center;
   justify-content: space-around;
   color: rgba(0,0,0,0.3);
-  position: fixed;
-
 }
 .custom-footer-links {
   display: flex;

@@ -1,0 +1,33 @@
+// .date-input::placeholder {
+//   color: white;
+// }
+// .date-input:value {
+//   color: white;
+// }
+
+.opacity-form {
+  .form-control {
+    color: white;
+  background-color: rgba(226, 154, 67, 0.1);
+  }
+}
+// .form-control div.value {
+//   color: white
+// }
+
+// .simple_form {
+//   div.input {
+//     color: white;
+//   }
+// }
+.form-container{
+  max-width: 50%;
+  margin-top: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (max-width: 600px) {
+    .form-container {
+        max-width: 100%;
+    }
+}

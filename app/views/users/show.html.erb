@@ -1,6 +1,6 @@
-<div class="banner">
-  <div class="background-cover" style= "background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path current_user.cl_photo %>);">
-    <div class="container flexbox white-center">
+<div class="banner-custom" style= "background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path current_user.cl_photo %>);">
+  <div class="background-cover" >
+    <div class="form-container flexbox white-center">
 
         <h2> Hello <%= @user.full_name %>!</h2>
         <p>You have given us this email address:
@@ -21,7 +21,7 @@
              <% current_user.items.each do |item| %>
              <li><h3><%= item.category %></h3></li>
              <li><%= item.description %></li>
-             <li><£<%= item.price %></li>
+             <li>£<%= item.price %></li>
            <% end %>
            </ul>
           <% end %>
