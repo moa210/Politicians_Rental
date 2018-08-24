@@ -17,6 +17,9 @@
                 <% user.items.each do |item| %>
                   <li><p><%= item.description %>: <strong>£<%= item.price %></strong></p>
                     <% if current_user == user %>
+                      <%= link_to item_path(item) do %>
+                        <i class="fas fa-eye change"></i>
+                      <% end %>
                       <%= link_to edit_item_path(item) do  %>
                         <i class="fas fa-pencil-alt change"></i>
                       <% end %>

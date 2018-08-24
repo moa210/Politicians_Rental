@@ -1,10 +1,11 @@
 .banner {
-  height: 550px;
+  height: calc(80vh);
   background-size: cover;
 
   h1 {
     color: white;
     font-size: 67px;
+    margin-top: 100px;
     margin-bottom: 35px;
     letter-spacing:20px;
     font-family: "Raleway", sans-serif;
