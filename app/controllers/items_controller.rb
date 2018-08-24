@@ -10,10 +10,11 @@ class ItemsController < ApplicationController
         OR users.email @@ :query \
       "
       @items = policy_scope(Item).joins(:user).where(sql_query, query: "%#{params[:query]}%")
+      # raise
     else
       @items = policy_scope(Item)
     end
-    @users = User.all
+    @users = @items.collect(&:user).uniq
   end
 
   def user_items
