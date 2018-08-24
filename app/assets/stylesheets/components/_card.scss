@@ -14,6 +14,18 @@
   padding: 0;
 }
 
+.card-description{
+  p {
+    color:white;
+    text-align:center;
+  }
+  h4{
+      color: white;
+  text-align:center;
+  }
+}
+
+
 .flexbox {
   display: flex;
   flex-direction: column;
@@ -118,3 +130,16 @@
   color: white;
   text-align: center;
 }
+
+.cancel{
+  position:absolute;
+  bottom:30px;
+  right:20px;
+}
+.update{
+  position:absolute;
+  bottom:30px;
+  left:20px;
+}
+
+
