@@ -1,7 +1,13 @@
-<div class="container">
-  <h2>Edit Profile</h2>
-  <%= simple_form_for @user do |f| %>
-    <%= f.text_area :about, placeholder: "Describe yourself here" %>
-    <%= f.submit "Update" %>
-  <% end %>
+<div class="banner-custom" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path @user.cl_photo %>);">
+  <div class="background-cover" class="white-center">
+    <div class="form-container flexbox white">
+       <div class="front white-center opacity-form">
+        <p>Edit your profile</p>
+        <%= simple_form_for @user do |f| %>
+        <div><%= f.text_area :about, placeholder: "Describe yourself here" %></div>
+        <div><%= f.submit "Update" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
 </div>
