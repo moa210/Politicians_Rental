@@ -6,6 +6,10 @@
 //   background-size: cover;
 // }
 
+.min-height-content {
+  min-height: calc(100vh - 140px);
+}
+
 #homepage-banner {
 /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
 
