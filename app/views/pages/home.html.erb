@@ -16,7 +16,7 @@
           <div class="card-header">
             <p><%= item.user.full_name %></p>
             <%= link_to user_path(item.user) do %>
-              <div class="card-header-avatar" style="background-image: url(<%= cl_image_path item.user.photo %>)"></div>
+              <div class="card-header-avatar" style="background-image: url(<%= cl_image_path item.user.cl_photo %>)"></div>
             <% end %>
           </div>
           <%= link_to item_path(item) do %>
