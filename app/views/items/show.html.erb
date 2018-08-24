@@ -16,7 +16,7 @@
   <% end %>
 
   <% if policy(@booking).create? %>
-    <h2>Booking Now</h2>
+    <h2>Book Now</h2>
     <%= simple_form_for([@item, @booking]) do |f| %>
       <%= f.input :date_from, input_html: { id: 'date-from' }, as: :string %>
       <%= f.input :date_to, input_html: { id: 'date-to' }, as: :string %>
