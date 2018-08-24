@@ -11,7 +11,7 @@
         <% if item.user == current_user %>
           <div class="card-container col-xs-12 col-sm-6 col-md-3">
             <div class="card-index card<%=item.id%>">
-              <div class="front" style="background-image:  linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 70%), url(<%= image_path "bicycle_all.jpg" %>);">
+              <div class="front" style="background-image:  linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.6) 70%), url(<%= cl_image_path item.photo %>);">
                 <h2><%= item.user.full_name %>'s <%= item.category %></h2>
                 <% if policy(item).edit? %>
                   <%= link_to item_path(item),
