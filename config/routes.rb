@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   # authentication
   devise_for :users
-  resources :bookings, except: [:new, :create, :edit, :update]
+  resources :bookings, only: [:index, :show]
   get 'user_items', to: 'items#user_items', as: 'user_items'
   resources :items do
-    resources :bookings, only: [:new, :create, :edit, :update]
+    resources :bookings, except: [:index, :show]
   end
   resources :users, only: [:show, :edit, :update]
   # get 'item/show'

@@ -14,6 +14,7 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
   end
 
   def edit
+    @item = Item.find(params[:item_id])
   end
 
   def show
@@ -38,6 +39,7 @@ before_action :find_booking, only: [:edit, :update, :show, :destroy]
   end
 
   def update
+    @item = Item.find(params[:item_id])
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
