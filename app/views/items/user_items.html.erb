@@ -1,5 +1,9 @@
 <div class="container">
-  <h1>My Items</h1>
+  <% if current_user.items == [] %>
+    <h2>You have no items listed</h2>
+  <% else %>
+    <h2>This is what you offer to others</h2>
+  <% end %>
    <% if current_user.politician? %>
     <%= link_to new_item_path do %>
       <p>Add Item</p>

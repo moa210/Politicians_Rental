@@ -7,8 +7,12 @@
     </div>
 </div>
 <!-- Things for rent container -->
-<div class="container">
-  <h2>Items for Rent</h2>
+<div class="container homec">
+  <% if current_user.nil? %>
+    <h2 id="items-header">Items available to you</h2>
+  <% else %>
+    <h2 id="items-header"><%= current_user.full_name.capitalize%> pick from the selection below</h2>
+  <% end %>
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-sm-4 col-xs-6 ">
