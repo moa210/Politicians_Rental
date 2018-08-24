@@ -1,108 +1,62 @@
-<div class="body">
-  <div class="container">
+<div class="container row">
+  <div class="col-lg-12 col-md-12 hide-sm">
+    <div class="card-container-large">
+        <div class="card-body">
+          <div class="front card-index card-booking" style= "background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path current_user.photo %>);">
+            <h2> Hello <%= @user.full_name %>!</h2>
+            <p>You have given us this email address:
+              <%= @user.email %>
+            </p>
+            <p>This is what others see about you:</p>
+            <p class="card-text">
+              <%= @user.about%>
+            </p>
+            <p>Is this still up to date?</p>
+            <p><%= link_to edit_user_path(@user) do  %>
+              <i class="fas fa-pencil-alt change"></i>
+            <% end %></p>
 
-        <div class="col-lg-3 col-md-4 hide-sm">
-          <div id="user" class="space-4 ">
-            <div class="card">
-              <li class="active media-photo media-photo-block">
-                <img alt="Account Photo" class="img-responsive" height="225" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Alesso_profile.png" title="Account Photo" width="225">
-              </li>
-            </div>
-            <div class="card">
-
-
-            <div class="card">
-              <div class="card-body">
-                <div class="card-header">Verified Info</div>
-                <p class="card-text">Email Address</p>
-                <a href="">Verify more info</a>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header"> Connected accounts
-            </div>
-            <div class="panel-body">
-              <ul class="list-unstyled space-3" title="Connected accounts">
-                <li class="row row-table space-2">
-                  <div class="col-12 col-middle">
-                    Facebook
-                  </div>
-                  <div class="col-3 col-middle">
-                    <i class="icon icon-ok h3" aria-hidden="true"></i>
-                  <span class="screen-reader-only">Verified</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-         <div class="card">
-            <div class="card-body">
-              <h5 class="card-header">About me</h5>
-              <p class="card-text">Personal Information</p>
-              <p class="card-description">Short Description</p>
-            </div>
           </div>
         </div>
-
-
-
-      <div class="col-lg-9 col-md-8 col-sm-12">
-        <div>
-          <h2> Hey I'm <%=  %></h2>
-
-
-          <div class="h5 space-top-2">
-            <a href="/s/London--United-Kingdom" class="link-reset">London, United Kingdom</a>
-            <span class="text-normal">
-              Joined in <%=  %>
-            </span>
-          </div>
-
-          <div class="text-muted space-top-2">
-            <span> Report this user </span>
-          </div>
-
-          <div class="edit_profile_container space-3">
-          <a href="/users/edit">Edit Profile</a></div>
       </div>
-    </div>
-
-
-
-      </div>
+   </div>
+ </div>
+ <div class="card-container-large">
+   <div class="card-body">
+   <% if current_user.politician? %>
+     <% unless current_user.items == [] %>
+        <ul>
+         <li><h2>Here are you listings</h2></li>
+       <% current_user.items.each do |item| %>
+         <li><h3><%= item.category %></h3></li>
+         <li><%= item.description %></li>
+         <li><£<%= item.price %></li>
+       <% end %>
+       </ul>
+     <% end %>
+   <% end %>
+   <% unless current_user.bookings == [] %>
+   <div>
+   <ul>
+     <li><h2>Here are your bookings</h2></li>
+     <% current_user.bookings.each do |booking| %>
+       <div>
+         <li>
+           <h3>You have a <strong><%= booking.item.description %></strong>, that belongs to <%= booking.item.user.full_name %>.
+             <% unless booking.days.nil? %>
+               You are renting it <strong>for <%= booking.days %> days</strong>
+             <% end %>
+             <% unless booking.total_price.nil? %>and the total price of it is <strong>£
+               <%= booking.total_price %>.</strong>
+             <% end %>
+           </h3>
+         </li>
+      <% end %>
+   <% end %>
+   </div>
+  <p> I hope this is all you expected to see here ...</p>
+  </ul>
+  </div>
   </div>
 </div>
-  <div class="row">
-    <h1> <% current_user.full_name %> </h1>
-  </div>
-    <h2>About Me</h2>
-    <p><%= current_user.about %></p>
-    <%= link_to edit_user_path do %>
-      <i class="fas fa-pencil-alt"></i>
-    <% end %>
-    <% if current_user.politician? %>
-      <% unless current_user.items == [] %>
-        <h2>My Listings</h2>
-        <% current_user.items.each do |item| %>
-          <h3><%= item.category %></h3>
-          <p><%= item.description %></p>
-          <p>£<%= item.price %></p>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% unless current_user.bookings == [] %>
-      <h2>My Bookings</h2>
-      <% current_user.bookings.each do |booking| %>
-        <h3><%= booking.item.category.capitalize %>: <%= booking.item.user.full_name %></h3>
-        <p><%= booking.item.description %></p>
-        <% unless booking.days.nil? %>
-          <p><strong><%= booking.days %> days</strong></p>
-        <% end %>
-        <% unless booking.total_price.nil? %>
-          <p>£<%= booking.total_price %></p>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
+
