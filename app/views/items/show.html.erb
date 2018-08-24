@@ -1,7 +1,7 @@
 
-<div class="banner">
-  <div class="background-cover" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path @item.photo %>);">
-    <div class="container flexbox white">
+<div class="banner-custom" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path @item.photo %>);">
+  <div class="background-cover">
+    <div class="form-container flexbox white">
       <% if @item.category == "accommodation" %>
         <h2><%= @item.user.full_name %>'s crib</h2>
       <% elsif @item.category == "clothing" %>

@@ -39,14 +39,7 @@ justify-content: center;
 #homepage-banner p {
   color: white;
 }
-.opacity-form{
-  .form-control{
-  background-color: rgba(226, 154, 67, 0.1);
-}
-  .flatpickr-calendar{
-   background-color: rgba(226, 154, 67, 0.1);
-  }
-}
+
 .white{
   color: white;
 }
@@ -56,6 +49,10 @@ justify-content: center;
 .white-center{
   text-align: center;
   color: white;
+  padding: 10px;
+  .user_about{
+    min-height: 200px;
+  }
   input[type="submit"]{
     color: white;
     padding: 4px;
