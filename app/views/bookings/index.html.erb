@@ -1,8 +1,8 @@
 <div class="container">
   <h2>Here are your bookings</h2>
     <% if current_user.politician? %>
-      <%= link_to new_item_path do %>
-      <p>Add Item</p>
+      <%= link_to items_path do %>
+      <p><%= current_user.full_name.capitalize %> would you like to rent a new item?</p>
       <% end %>
     <% end %>
   <div class="row">
