@@ -1,46 +1,57 @@
 <div class="container">
-  <h2>Here are your bookings</h2>
-    <% if current_user.politician? %>
-      <%= link_to items_path do %>
-      <p><%= current_user.full_name.capitalize %> would you like to rent a new item?</p>
-      <% end %>
-    <% end %>
-  <div class="row">
-    <% @bookings.each do |booking| %>
-    <% if booking.user == current_user %>
-      <div class="col-sm-4 col-xs-6 ">
-      <%= link_to booking_path(booking) do %>
-          <div class="card-body card-booking">
-            <div class="card-container">
-              <div class="front card-index" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path booking.item.photo %>);">
-                <div class="card-description">
-                  <p><%= booking.item.description%>:</p>
-                  <p>Period:
-                    <% if (booking.days).to_i <= 1 %>
-                      <%= booking.days %>
-                      <%= "day"  %></p>
-                    <% else  %>
-                      <%= booking.days %>
-                      <%= "days"  %></p>
-                    <% end %>
-                    <p>Price: £<%= booking.total_price %> </p>
-                    <p>Belongs to: <%= booking.item.user.full_name %></p>
-                    <% if policy(booking).edit? %>
-                      <p><%= link_to "Update", edit_item_booking_path(booking.item, booking)%></p>
-                    <% end %>
-                    <% if policy(booking).destroy? %>
-                      <p><%= link_to "Cancel", item_booking_path(booking.item, booking),
-                        method: :delete,
-                        data: { confirm: "Are you sure you want to delete booking for #{booking.item.description}?" }%></p>
-                    <% end %>
-                </div>
-              </div>
-            </div>
+ <h2>Here are your bookings</h2>
+  <% if current_user.politician? %>
+   <%= link_to items_path do %>
+   <p><%= current_user.full_name.capitalize %> would you like to rent a new item?</p>
+   <% end %>
+  <% end %>
+ <div class="row">
+  <% @bookings.each do |booking| %>
+  <% if booking.user == current_user %>
+<!-- col of card -->
+   <div class="col-sm-4 col-xs-6 ">
+  <!-- card -->
+     <div class="card-container">
+  <!-- card body -->
+      <div class="cards-body card-booking">
+
+         <div class="front card-index" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.8) 90%), url(<%= cl_image_path booking.item.photo %>);">
+          
+
+        <div class="card-description flexbox ">
+           <h4><%= booking.item.description%> </h4>
+            <% if (booking.days).to_i <= 1 %>
+             <p>Period: <%= booking.days %> day</p>
+            <% else %>
+             <p>Period:<%= booking.days %> "days" %></p>
+            <% end %>
+            <p>Price: £<%= booking.total_price %> </p>
+            <p>Belongs to: <%= booking.item.user.full_name %></p>
+
+         </div>
+<!-- card-button -->
+           <div class="card-button"">
+            <% if policy(booking).edit? %>
+             <p class="update"> <%= link_to "Update", edit_item_booking_path(booking.item, booking)%></p>
+            <% end %>
+            <% if policy(booking).destroy? %>
+             <p class="cancel"><%= link_to "Cancel", item_booking_path(booking.item, booking),
+              method: :delete,
+              data: { confirm: "Are you sure you want to delete booking for #{booking.item.description}?" }%></p>
+            <% end %>
+
           </div>
         </div>
-      <% end %>
-    <% end %>
-    <% end %>
-  </div>
-</div>
 
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+
+
+   
+  <% end %>
+  <% end %>
+ </div>
+</div>

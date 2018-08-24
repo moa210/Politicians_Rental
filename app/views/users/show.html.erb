@@ -35,15 +35,14 @@
              <% unless booking.days.nil? %>
                You are renting it <strong>for <%= booking.days %> days</strong>
              <% end %>
-             <% unless booking.total_price.nil? %>and the total price of it is <strong>£
-               <%= booking.total_price %>.</strong>
+             <% unless booking.total_price.nil? %> at a total cost of <strong>£<%= booking.total_price %>.</strong>
              <% end %>
            </p>
          </li>
         <% end %>
         <% end %>
 
-        <p> I hope this is all you expected to see here ...</p>
+        <!-- <p> I hope this is all you expected to see here ...</p> -->
         </ul>
     </div>
   </div>

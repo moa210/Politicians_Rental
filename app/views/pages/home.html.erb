@@ -10,7 +10,7 @@
   <% if current_user.nil? %>
     <h2 id="items-header">Items available to you</h2>
   <% else %>
-    <h2 id="items-header"><%= current_user.full_name.capitalize%> pick from the selection below</h2>
+    <h2>Items For Rent</h2>
   <% end %>
   <div class="row">
     <% @items.each do |item| %>
