@@ -47,12 +47,12 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to user_items_path
+    redirect_to items_path
   end
 
   def update
     if @item.update(item_params)
-      redirect_to item_path(@item)
+      redirect_to items_path
     else
       render :edit
     end
