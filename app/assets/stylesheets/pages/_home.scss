@@ -5,7 +5,9 @@
 //   background-size: auto;
 //   background-size: cover;
 // }
-
+body{
+  color: rgb(75,75,75);
+}
 .min-height-content {
   min-height: calc(100vh - 140px);
 }
