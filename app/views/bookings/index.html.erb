@@ -20,11 +20,7 @@
 
         <div class="card-description flexbox ">
            <h4><%= booking.item.description%> </h4>
-            <% if (booking.days).to_i <= 1 %>
-             <p>Period: <%= booking.days %> day</p>
-            <% else %>
-             <p>Period:<%= booking.days %> "days" %></p>
-            <% end %>
+             <p>Period: <%= booking.days %> days</p>
             <p>Price: £<%= booking.total_price %> </p>
             <p>Belongs to: <%= booking.item.user.full_name %></p>
 
