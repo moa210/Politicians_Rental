@@ -1,10 +1,14 @@
 <div class="container">
-  <h2>Here are your bookings</h2>
-    <% if current_user.politician? %>
-      <%= link_to items_path do %>
-      <p><%= current_user.full_name.capitalize %> would you like to rent a new item?</p>
+  <% if current_user.bookings == [] %>
+    <h2>You have no bookings</h2>
+  <% else %>
+    <h2>Here are your bookings</h2>
+  <% end %>
+      <% if current_user.politician? %>
+        <%= link_to items_path do %>
+        <p><%= current_user.full_name.capitalize %> would you like to rent a new item?</p>
+        <% end %>
       <% end %>
-    <% end %>
   <div class="row">
     <% @bookings.each do |booking| %>
     <% if booking.user == current_user %>
